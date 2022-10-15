@@ -5,7 +5,7 @@ from portal import views
 
 urlpatterns = [
     path('',views.complaint,name="complaint"),
-    # path('fill',views.fill,name="fill"),
+    path('authority',views.authority,name="authority"),
 
 
 ]

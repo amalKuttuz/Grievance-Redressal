@@ -1,0 +1,31 @@
+{% extends 'theme.html' %}
+{% block content %}
+{%for d in det%}
+
+<div class="d-inline-block p-2 ">
+    <div class="row p-2">
+      <div class="col p-4">
+<div class="card" style="width: 18rem;">
+    <img src="{{d.images.url}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{d.name}}
+    </h5>
+      <p class="card-text">{{d.desc}}
+    </p>
+      <a href="#" class="btn btn-primary">{{d.post}}
+    </a>
+    <h5>{{d.contact}}</h5>
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+{% endfor %}
+
+
+{% endblock content %}

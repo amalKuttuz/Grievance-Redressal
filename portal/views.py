@@ -1,3 +1,4 @@
+from multiprocessing import context
 from django.shortcuts import render,redirect,HttpResponse
 from.forms import HomeForm
 from. import models 
@@ -26,3 +27,12 @@ def complaint(request):
         form=HomeForm()
     # return HttpResponse("pass")  
     return render(request,'complaint.html',{'form':form})
+
+def authority(request):
+    
+    det=models.AuthorityModel.objects.all
+    context={
+        'det':det
+
+            } 
+    return render(request,'authority.html',context)

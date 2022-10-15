@@ -3,9 +3,12 @@
        
      
 <form method="post" action="" >
+
     {%if messages %}
     {% for messages in messages%}
-       <div class="invalid" > {{messages}}
+       <div class="alert alert-primary" role="alert">
+        {{messages}}
+    </div>
     {% endfor%}
         </div>
 {%endif%}

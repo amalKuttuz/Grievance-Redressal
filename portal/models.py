@@ -10,6 +10,18 @@ class ComplaintModel(models.Model):
     def __str__(self):
         return self.name
 
+class AuthorityModel(models.Model):
+    name=models.CharField( max_length=50)
+    post=models.CharField( max_length=50)
+    desc=models.CharField( max_length=150)
+    contact=models.CharField( max_length=50)
+    images=models.ImageField(upload_to='images')
+
+
+    def __str__(self):
+        return self.name
+
+
     
 
 
