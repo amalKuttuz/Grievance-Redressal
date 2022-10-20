@@ -1,11 +1,14 @@
 from django.urls import path
 
-from portal import views
+from portal.views import *
 
 
 urlpatterns = [
-    path('',views.complaint,name="complaint"),
-    path('authority',views.authority,name="authority"),
+    path('complaint',complaint,name="complaint"),
+    path('authority',authority,name="authority"),
+    path('',index,name="index"),
+    path('staff',Staff.as_view()),
+   
 
 
 ]

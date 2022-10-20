@@ -1,10 +1,13 @@
 from multiprocessing import context
 from django.shortcuts import render,redirect,HttpResponse
 from.forms import HomeForm
-from. import models 
+from. models import *
 from django.contrib import messages
+from django.views.generic import ListView
 
-
+def index(request):
+    return render(request,'index.html')
+  
 
 # Create your views here.
 def complaint(request):
@@ -30,9 +33,16 @@ def complaint(request):
 
 def authority(request):
     
-    det=models.AuthorityModel.objects.all
+    det=AuthorityModel.objects.all()
     context={
         'det':det
 
             } 
     return render(request,'authority.html',context)
+
+# def staff(request):
+#     table=ComplaintModel.objects.all()
+#     return render(request,'staff.html',{'table':table})
+class Staff(ListView):
+    model=ComplaintModel
+    template_name='staff.html'
