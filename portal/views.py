@@ -1,3 +1,4 @@
+from dataclasses import fields
 from multiprocessing import context
 from django.shortcuts import render,redirect,HttpResponse
 from.forms import HomeForm
@@ -13,13 +14,13 @@ def index(request):
 def complaint(request):
     if request.method=='POST':
         form=HomeForm(request.POST)
-
+        
         if form.is_valid():
             datas=form.cleaned_data
-            cd=models.ComplaintModel(
-                name=datas['full_name'],
-                complain=datas['complaint'],
-                batch=datas['class_name'],
+            cd=ComplaintModel(
+                # username=datas['username'],
+                complaint=datas['complaint'],
+                coursename=datas['coursename'],
                 contact=datas['contact']
                         )
 
@@ -46,3 +47,4 @@ def authority(request):
 class Staff(ListView):
     model=ComplaintModel
     template_name='staff.html'
+    fields=['name',]
