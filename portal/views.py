@@ -85,8 +85,9 @@ def authority(request):
 
 @login_required(login_url='login')
 def staffs(request):
-    # sq=ComplaintModel.objects.all()
-    return render(request,'staff.html')
+    sq=ComplaintModel.objects.all()
+    context={'sq':sq}
+    return render(request,'staff.html',context)
 
 
 def logoutFunction(request):
@@ -95,10 +96,5 @@ def logoutFunction(request):
         logout(request)
         messages.success(request, "sucessfully logged out")
         return redirect('/')
-
-        # if user is None:
-        #     return render (request,'/',{'username',username})
-        # else:
-        #      return render (request,'staff.html',{'username',username})
     return render(request,'logout.html',{'username':username})
     
