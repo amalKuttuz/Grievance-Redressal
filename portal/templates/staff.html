@@ -1,8 +1,15 @@
 {% extends 'theme.html' %}
 {% block content %}
 
-{% load render_table from django_tables2 %}
-   <table>
-        {% render_table object_list %}
-   </table>   
+{% if user.is_authenticated and user.is_staff %}
+
+
+{% include 'dashboard.html' %}
+
+{% else %}
+<h1> You need to login as staff to view complaints</h1>
+
+{% endif %}
+
+
 {% endblock content %}

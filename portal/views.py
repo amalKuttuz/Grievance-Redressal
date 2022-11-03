@@ -83,11 +83,10 @@ def authority(request):
             } 
     return render(request,'authority.html',context)
 
-
-class Staff(ListView):
-    model=ComplaintModel
-    template_name='staff.html'
-    fields=['name',]
+@login_required(login_url='login')
+def staffs(request):
+    # sq=ComplaintModel.objects.all()
+    return render(request,'staff.html')
 
 
 def logoutFunction(request):
