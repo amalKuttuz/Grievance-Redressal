@@ -1,0 +1,22 @@
+{% extends 'theme.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+<form method="POST">
+    {% csrf_token %}
+<h2> are you sure you want to logout from {{username}}? <h2>
+<button type="submit" class="btn btn-primary">Yes</button>
+<a  href="index.html" class="btn btn-primary">No</a>
+
+</form>
+{% else %}
+
+{%for messages in messages%}
+{{messages}}
+
+{% endfor %}
+      
+{% endif %}
+
+
+{% endblock content %}

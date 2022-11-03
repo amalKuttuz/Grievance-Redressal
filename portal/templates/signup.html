@@ -1,0 +1,22 @@
+{% comment %} <style>
+    body {
+      background: #555;
+    }
+    
+    .content {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 10px;
+    }
+    </style>  {% endcomment %}
+
+<form method='POST'>
+    {% csrf_token %}
+    <div class="content">
+        <table>
+        {{ forms.as_table }}  
+        </table>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>

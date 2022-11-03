@@ -1,0 +1,26 @@
+{% extends 'theme.html' %}
+
+{% block content %}
+{%for messages in messages%}
+{{messages}}
+
+{% endfor %}
+<form method='POST'>
+    {% csrf_token %}
+    <div class="content">
+        <table>
+        
+            <div class="form-group">
+              <label for="">username</label>
+              <input type="text"
+                class="form-control" name="username" id="username" aria-describedby="helpId" placeholder="username">
+                <label for="">password</label>
+                <input type="text"
+                class="form-control" name="password" id="password" aria-describedby="helpId" placeholder="password">
+            </div>
+  
+        </table>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}
