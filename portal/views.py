@@ -95,6 +95,7 @@ def logoutFunction(request):
     if request.method=="POST":
         logout(request)
         messages.success(request, "sucessfully logged out")
+        return redirect('/')
 
         # if user is None:
         #     return render (request,'/',{'username',username})

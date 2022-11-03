@@ -24,30 +24,30 @@
               <a class="nav-link active" aria-current="page" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="complaint">File Complaint</a>
+              <a class="nav-link" href="/complaint/">File Complaint</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="authority">Authority</a>
+              <a class="nav-link" href="/authority/">Authority</a>
             </li>
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="logout">Logout</a>
+              <a class="nav-link" href="/logout/">Logout</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#">Profile</a>
               </li>
             {% else %}
             <li class="nav-item">
-                <a class="nav-link" href="signup">SignUp</a>
+                <a class="nav-link" href="/signup/">SignUp</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login">Login</a>
+                <a class="nav-link" href="/login/">Login</a>
               </li>
 
             {% endif %}
             
               <li class="nav-item">
-                <a class="nav-link" href="staff">Staff</a>
+                <a class="nav-link" href="/staff/">Staff</a>
               </li>
           </ul>
         </div>
