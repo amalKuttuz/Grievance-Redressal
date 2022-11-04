@@ -14,6 +14,7 @@ from django.contrib import messages
 def index(request):
     return render(request,'user/index.html')
 
+
 def createuser(request):
     forms=UserForm()   
     if request.method=='POST':
