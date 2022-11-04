@@ -1,0 +1,139 @@
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" >    </head>
+
+        <!-- Theme Style -->
+        <link rel="stylesheet" type="text/css" href="http://mmnsscollege.ac.in/mmnss/stylesheets/style.css">
+    
+    
+        <!-- Responsive -->
+        <link rel="stylesheet" type="text/css" href="http://mmnsscollege.ac.in/mmnss/stylesheets/responsive.css">
+       
+        <!-- Colors -->
+    
+        <body>
+        <div class="container-fluid">
+            <ul class="nav justify-content-center">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/complaint/">File Complaint</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/authority/">Authority</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout/">Logout</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Profile</a>
+              </li>
+            {% else %}
+            <li class="nav-item">
+                <a class="nav-link" href="/signup/">SignUp</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login/">Login</a>
+              </li>
+
+            {% endif %}
+            
+              <li class="nav-item">
+                <a class="nav-link" href="/staff/">Staff</a>
+              </li>
+          </ul>
+        </div>
+
+
+
+
+
+       {% block content %}
+       
+       
+       {% endblock content %}
+
+        <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-widgets">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-4">
+                      <div class="widget widget-text">
+                          <img src="https://www.icsi.edu/media/webmodules/Grievance_220319.jpg" alt="image">
+                          <ul>
+                              <li class="address">Head office Trivandrum-691571</li>
+                              <li class="phone"><a href="#">0474-123456</a></li>
+                              <li class="email"><a href="#">grv@mail.com</a></li>
+                          </ul>
+                      </div><!-- /.widget -->
+                  </div>
+  
+                  <div class="col-md-4">
+                      <div class="widget widget_tweets clearfix">
+                          <h5 class="widget-title">User Links</h5>
+                          <ul class="link-left">
+                              <li>
+                                  <a href="/">Home</a>
+                              </li>
+                              <li>
+                                  <a href="complaint">File Complaint</a>
+                              </li>
+                              <li>
+                                  <a href="authority">Authority</a>
+                              </li>
+                              <li>
+                                  <a href="about">About </a>
+                              </li>
+                              <li>
+                                  <a href="#">Judisiaory</a>
+                              </li>
+                          </ul>
+                          
+                      </div><!-- /.widget-recent-tweets -->
+                  </div><!-- /.col-md-2 -->
+  
+                  <div class="col-md-4">
+                      <div class="widget widget_tweets clearfix">
+                          <h5 class="widget-title">Location</h5>
+                          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15768.468197460747!2d76.6678971!3d8.8686944!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xbea49c0ba6cab3f3!2sMannam+Memorial+NSS+College!5e0!3m2!1sen!2sin!4v1490909624332" width="100%" height="220" frameborder="0" style="border:0" allowfullscreen></iframe>
+  
+                      </div><!-- /.widget-recent-tweets -->
+                  </div><!-- /.col-md-4-->
+              </div><!-- /.row -->
+          </div><!-- /.container -->
+      </div><!-- /.footer-widgets -->
+  </footer>
+  
+  <a class="go-top">
+      <i class="fa fa-chevron-up"></i>
+  </a>
+  
+  <!-- Bottom -->
+  <div class="bottom">
+      <div class="container">
+         
+          <div class="row">
+              <div class="container-bottom">
+                  <div class="copyright">
+                      <p>Copyright © 2022. All Rights Reserved.
+                  </div>
+              </div><!-- /.container-bottom -->
+          </div><!-- /.row -->
+      </div><!-- /.container -->
+  </div>
+  </div><!-- /. boxed -->
+  
+  
+  
+  
+    </body>
+</html>

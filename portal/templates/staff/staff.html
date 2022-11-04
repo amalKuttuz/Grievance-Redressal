@@ -1,10 +1,10 @@
-{% extends 'theme.html' %}
+{% extends 'staff/stafftheme.html' %}
 {% block content %}
 
 {% if user.is_authenticated and user.is_staff %}
 
 
-{% include 'dashboard.html' %}
+{% include 'staff/dashboard.html' %}
 
 {% else %}
 <h1> You need to login as staff to view complaints</h1>

@@ -12,7 +12,7 @@ from django.contrib import messages
 
 
 def index(request):
-    return render(request,'index.html')
+    return render(request,'user/index.html')
 
 def createuser(request):
     forms=UserForm()   
@@ -26,9 +26,9 @@ def createuser(request):
         else:
             messages.error(request,"error")
 
-            return render(request,'signup.html',{'forms':forms})
+            return render(request,'auth/signup.html',{'forms':forms})
 
-    return render(request,'signup.html',{'forms':forms})
+    return render(request,'auth/signup.html',{'forms':forms})
 
 
 def userlogin(request):
@@ -37,14 +37,14 @@ def userlogin(request):
         user=authenticate(request,username=request.POST['username'],password=request.POST['password'])
         if user is not None:
             login(request,user)
-            return render(request,'index.html')
+            return render(request,'user/index.html')
 
         else:
             messages.error(request,"Incorrect credentials")
 
-            return render(request,'login.html')
+            return render(request,'auth/login.html')
 
-    return render(request,'login.html')
+    return render(request,'auth/login.html')
 
 
 
@@ -72,7 +72,7 @@ def complaint(request):
     else:
         form=HomeForm()
 
-    return render(request,'complaint.html',{'form':form})
+    return render(request,'user/complaint.html',{'form':form})
 
 def authority(request):
     
@@ -81,13 +81,13 @@ def authority(request):
         'det':det
 
             } 
-    return render(request,'authority.html',context)
+    return render(request,'user/authority.html',context)
 
 @login_required(login_url='login')
 def staffs(request):
     sq=ComplaintModel.objects.all()
     context={'sq':sq}
-    return render(request,'staff.html',context)
+    return render(request,'staff/staff.html',context)
 
 
 def logoutFunction(request):
@@ -96,5 +96,5 @@ def logoutFunction(request):
         logout(request)
         messages.success(request, "sucessfully logged out")
         return redirect('/')
-    return render(request,'logout.html',{'username':username})
+    return render(request,'auth/logout.html',{'username':username})
     
