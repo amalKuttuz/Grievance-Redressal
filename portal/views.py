@@ -85,10 +85,17 @@ def authority(request):
     return render(request,'user/authority.html',context)
 
 @login_required(login_url='login')
-def staffs(request):
+def viewcomplaints(request):
+    username=request.user
     sq=ComplaintModel.objects.all()
-    context={'sq':sq}
-    return render(request,'staff/staff.html',context)
+    context={'sq':sq,'username':username}
+    return render(request,'staff/complaints.html',context)
+
+@login_required(login_url='login')
+def userlist(request):
+    users=User.objects.all()
+    context={'users':users}
+    return render(request,'staff/userslist.html',context)
 
 
 def logoutFunction(request):

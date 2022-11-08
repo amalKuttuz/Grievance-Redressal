@@ -1,0 +1,53 @@
+{% extends 'staff/stafftheme.html' %}
+{% block content %}
+
+{% if user.is_authenticated and user.is_staff %}
+
+<style>
+    table,th,td{
+        border: 1px solid black;
+        align-center;
+    }
+    th{
+        font-weight: bold;
+    }
+    table{
+        width:100%;
+        height:80%;       }
+</style>
+
+
+<div >
+ <br>
+<h1> Staff login </h1>
+<table>
+    <tr>
+        <th> First name:	</th>
+        <th> Last name:	</th> 
+        <th> Email address:</th>
+        <th>Username</th> 
+        <th>Account created on</th> 
+
+    </tr>
+{% for i in users  %}
+<tr> 
+    <td>{{i.first_name}} </td>
+    <td>{{i.last_name}} </td>
+    <td> {{i.email}}</td>
+    <td> {{i.username}}</td>
+    <td> {{i.date_joined}}</td>
+
+</tr>
+
+
+{% endfor %}
+</table>
+
+</div>
+
+
+{% else %}
+<h1> You need to login as staff to view complaints</h1>
+
+{% endif %}
+{% endblock %}

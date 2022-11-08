@@ -18,9 +18,7 @@ class UserForm(forms.ModelForm):
     class Meta:
         model=User
         fields=['first_name','last_name','email','username','password']
-    def save(self,commit=True):
-        user=User.objects.create_user(username,password)
-        return user
+    
 # class loginForm(forms.ModelForm):
     
 #     class Meta:

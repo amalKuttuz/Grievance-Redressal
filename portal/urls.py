@@ -7,10 +7,12 @@ urlpatterns = [
     path('complaint/',complaint,name="complaint"),
     path('authority/',authority,name="authority"),
     path('',index,name="index"),
-    path('staff/',staffs,name='staff'),
+    path('viewcomplaints/',viewcomplaints,name='viewcomplaints'),
     path('login/',userlogin,name="login"),
     path('signup/',createuser,name="signup"),
-    path('logout/',logoutFunction,name="logout")
+    path('logout/',logoutFunction,name="logout"),
+        path('staff/userslist',userlist,name="userslist")
+
 
 
    
