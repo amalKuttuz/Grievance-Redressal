@@ -35,4 +35,4 @@ python manage.py runserver
 
 Then go to the browser and enter the url **http://localhost:8000/**
 
-<a href="athulskrishnan6.pythonanywhere.com" >live demo </a>
+<a href="https://athulskrishnan6.pythonanywhere.com" >live demo </a>
