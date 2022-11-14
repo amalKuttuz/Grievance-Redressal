@@ -1,0 +1,64 @@
+{% extends 'user/usertheme.html' %}
+{% block content %}
+
+<div class="page-breadcrumb bg-white">
+    <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-8">
+            <h4 class="page-title">Response</h4>
+
+        </div>
+    </div>
+
+<style>
+    table,th,td{
+        border: 1px solid black;
+        align-center;
+    }
+    th{
+        font-weight: bold;
+    }
+    table{
+        width:30%;
+        height:20%;       }
+</style>
+
+{% if s %}
+<table>
+    <tr>
+        <th> Application ID</th>
+        <th> Status</th> 
+        <th> Response</th>
+    </tr>
+{% for i in s  %}
+<tr> 
+    <td>{{i.id}} </td>
+    <td>{{i.status}} </td>
+    <td>{{i.response}} </td>
+</tr>
+
+
+{% endfor %}
+</table>
+<a name="next" id="next" class="btn btn-primary" href="/track" role="button">Check another</a>
+</div>
+
+
+{% else %}
+
+<form method='POST'  >
+    {% csrf_token %}
+<div class="form-group">
+  <label for="s">Tracking ID</label>
+  <input type="text" class="form-control" name="Tracking" id="Tracking" aria-describedby="helpId" placeholder="Enter tracking id">
+  <small id="helpId" class="form-text text-muted">Help text</small>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</div>
+</form>
+
+{% endif %}
+
+</div>
+</div>
+</div>
+{% endblock content %}
+

@@ -1,7 +1,7 @@
 from dataclasses import fields
 from multiprocessing import context
 from django.shortcuts import render,redirect,HttpResponse
-from.forms import HomeForm,UserForm
+from.forms import HomeForm,UserForm,Authorityfrom,ResponseUpdate
 from. models import *
 from django.contrib import messages
 from django.views.generic import ListView
@@ -92,6 +92,39 @@ def viewcomplaints(request):
     return render(request,'staff/complaints.html',context)
 
 @login_required(login_url='login')
+def staff(request):
+    username=request.user
+    context={'username':username}
+    return render(request,'staff/staff.html',context)
+
+@login_required(login_url='login')
+def profile(request):
+    user=request.user
+    q=AuthorityModel.objects.get(user_id=user)
+       
+    form=Authorityfrom(instance=q)
+    det=AuthorityModel.objects.filter(user_id=user)
+    context={
+        'det':det ,
+        'form':form
+
+            }  
+    if request.method=='POST':
+        form=Authorityfrom(request.POST,instance=q)
+        if form.is_valid():
+            form.save()
+            det=AuthorityModel.objects.filter(user_id=user)
+            context={
+                'det':det ,
+                'form':form
+
+                    }  
+            return redirect('/staff')
+        else:
+            return redirect('/')
+    return render(request,'staff/profile.html',context)
+
+@login_required(login_url='login')
 def userlist(request):
     users=User.objects.all()
     context={'users':users}
@@ -105,4 +138,55 @@ def logoutFunction(request):
         messages.success(request, "sucessfully logged out")
         return redirect('/')
     return render(request,'auth/logout.html',{'username':username})
+
+
+@login_required(login_url='login')
+def responselist(request):
+    res=ResponseModel.objects.all()
+    context={'res':res}
+    return render(request,'staff/response.html',context)
+
+@login_required(login_url='login')
+def updateresponse(request,id):
+    q=ResponseModel.objects.get(id=id)
+       
+    form=ResponseUpdate(instance=q)
+    context={
+        'form':form
+
+            }  
+    if request.method=='POST':
+        form=ResponseUpdate(request.POST,instance=q)
+        if form.is_valid():
+            form.save()
+            context={
+                'form':form
+
+                    }  
+            return redirect('/staff')
+        else:
+            return redirect('/')
+
+
+    return render(request,'staff/updateresponse.html',context)
+
+def trackstatus(request):
     
+    if request.method=='POST':
+        s=ResponseModel.objects.filter(id=request.POST['Tracking'])
+        context={
+            "s":s
+        }
+        return render(request,'user/trackstatus.html',context)
+    else:
+        context={
+            "no":"no data to display"
+        }
+    return render(request,'user/trackstatus.html',context)
+    
+
+def error_404_view(request, exception):
+       
+    # we add the path to the the 404.html file
+    # here. The name of our HTML file is 404.html
+    return render(request, '404.html')

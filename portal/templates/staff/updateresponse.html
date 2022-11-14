@@ -1,0 +1,24 @@
+{% extends 'staff/stafftheme.html' %}
+{% block content %}
+<div class="page-breadcrumb bg-white">
+    <div class="row align-items-center">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Response</h4>
+
+        </div>
+    </div>
+<div>
+{% if user.is_authenticated and user.is_staff %}
+<form method='POST'>
+{% csrf_token %}
+{{form}}
+
+<button type="submit" >Submit</button>
+</form>
+
+{% else %}
+<h1> You need to login as staff</h1>
+{% endif %}
+
+
+{% endblock %}
