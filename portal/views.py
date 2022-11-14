@@ -119,9 +119,12 @@ def profile(request):
                 'form':form
 
                     }  
-            return redirect('/staff')
+            messages.success(request,"Profile Updated")
+            return redirect('/profile')
         else:
-            return redirect('/')
+            messages.error(request,"An error occured")
+
+            return redirect('/profile')
     return render(request,'staff/profile.html',context)
 
 @login_required(login_url='login')
@@ -136,7 +139,7 @@ def logoutFunction(request):
     if request.method=="POST":
         logout(request)
         messages.success(request, "sucessfully logged out")
-        return redirect('/')
+        return redirect('/logout')
     return render(request,'auth/logout.html',{'username':username})
 
 
@@ -163,27 +166,33 @@ def updateresponse(request,id):
                 'form':form
 
                     }  
-            return redirect('/staff')
+            messages.success(request, "Response updated sucessfully")
+
+            return redirect('/staff/response')
         else:
-            return redirect('/')
+            messages.error("Unable to update")
+            return redirect('/staff/response')
 
 
     return render(request,'staff/updateresponse.html',context)
-
 def trackstatus(request):
     
-    if request.method=='POST':
-        s=ResponseModel.objects.filter(id=request.POST['Tracking'])
-        context={
-            "s":s
-        }
+        if request.method=='POST':
+            s=ResponseModel.objects.filter(id=request.POST['Tracking'])
+            context={
+                "s":s
+            }
+            messages.success(request,"Status fetched sucessfully")
+            return render(request,'user/trackstatus.html',context)
+        else:
+            context={
+                "no":"no data to display"
+            }
+            messages.error(request,"Complaint not found")
+
+
         return render(request,'user/trackstatus.html',context)
-    else:
-        context={
-            "no":"no data to display"
-        }
-    return render(request,'user/trackstatus.html',context)
-    
+
 
 def error_404_view(request, exception):
        

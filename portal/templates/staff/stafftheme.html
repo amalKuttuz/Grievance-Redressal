@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+{% if user.is_authenticated and user.is_staff %}
+
+
 {% load static %}
 <html dir="ltr" lang="en">
 
@@ -168,9 +171,9 @@
                             </a>
                         </li>
                         <li class="text-center p-20 upgrade-btn">
-                            <a href="{% static 'https://www.wrappixel.com/templates/ampleadmin/' %}"
+                            <a href="/logout"
                                 class="btn d-grid btn-danger text-white" target="_blank">
-                                Upgrade to Pro</a>
+                                Logout</a>
                         </li>
                     </ul>
 
@@ -246,3 +249,8 @@
 </body>
 
 </html>
+            
+{% else %}
+<h1> You need to login as staff</h1>
+
+{% endif %}

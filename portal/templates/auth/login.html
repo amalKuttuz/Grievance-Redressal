@@ -2,8 +2,9 @@
 
 {% block content %}
 {%for messages in messages%}
-{{messages}}
-
+<div class="alert alert-primary" role="alert">
+    {{messages}}
+</div>
 {% endfor %}
 <form method='POST'>
     {% csrf_token %}

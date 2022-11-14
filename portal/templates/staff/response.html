@@ -9,6 +9,16 @@
     </div>
 <div>
 {% if user.is_authenticated and user.is_staff %}
+        {% if messages %}
+
+     {%for messages in messages%}
+
+    <div class="alert alert-primary" role="alert">
+        {{messages}}
+    </div>
+    {% endfor %}
+
+    {% endif %}
 
 <style>
     table,th,td{

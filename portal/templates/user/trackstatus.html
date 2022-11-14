@@ -23,6 +23,7 @@
 </style>
 
 {% if s %}
+
 <table>
     <tr>
         <th> Application ID</th>
@@ -44,7 +45,16 @@
 
 
 {% else %}
+{% if messages %}
 
+{%for messages in messages%}
+
+<div class="alert alert-primary" role="alert">
+   {{messages}}
+</div>
+{% endfor %}
+
+{% endif %}
 <form method='POST'  >
     {% csrf_token %}
 <div class="form-group">
@@ -53,6 +63,7 @@
   <small id="helpId" class="form-text text-muted">Help text</small>
   <button type="submit" class="btn btn-primary">Submit</button>
 </div>
+
 </form>
 
 {% endif %}
